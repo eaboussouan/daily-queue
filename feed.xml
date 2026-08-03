@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Eric's Daily Queue</title>
+    <link>https://eaboussouan.github.io/daily-queue/</link>
+    <description>Daily AI briefs and tutor lessons, one file per episode, nothing ever expires.</description>
+    <language>en-us</language>
+    <itunes:author>Eric</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+  </channel>
+</rss>
