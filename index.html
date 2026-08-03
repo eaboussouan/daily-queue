@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Eric's Daily Queue</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: -apple-system, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 16px; background: #111; color: #eee; }
+h1 { font-size: 1.4em; }
+p.sub { color: #999; margin-top: -8px; }
+.ep { border-bottom: 1px solid #333; padding: 16px 0; }
+.ep .kind { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.05em; color: #7ab8ff; }
+.ep .title { font-weight: 600; margin: 4px 0; }
+.ep .date { color: #999; font-size: 0.85em; }
+audio { width: 100%; margin-top: 8px; }
+a.feed { color: #7ab8ff; }
+</style>
+</head>
+<body>
+<h1>Eric's Daily Queue</h1>
+<p class="sub">Daily AI briefs and tutor lessons. Subscribe: <a class="feed" href="feed.xml">feed.xml</a></p>
+<div id="episodes"></div>
+<script>
+fetch('feed.xml').then(r => r.text()).then(str => {
+  const doc = new DOMParser().parseFromString(str, 'text/xml');
+    const items = Array.from(doc.querySelectorAll('item'));
+      const container = document.getElementById('episodes');
+        if (items.length === 0) {
+            container.innerHTML = '<p>No episodes yet.</p>';
+                return;
+                  }
+                    items.forEach(item => {
+                        const title = item.querySelector('title')?.textContent || 'Untitled';
+                            const date = item.querySelector('pubDate')?.textContent || '';
+                                const enclosure = item.querySelector('enclosure');
+                                    const url = enclosure ? enclosure.getAttribute('url') : '';
+                                        const category = item.querySelector('category')?.textContent || '';
+                                            const div = document.createElement('div');
+                                                div.className = 'ep';
+                                                    div.innerHTML = `<div class="kind">${category}</div><div class="title">${title}</div><div class="date">${date}</div><audio controls src="${url}"></audio>`;
+                                                        container.appendChild(div);
+                                                          });
+                                                          });
+                                                          </script>
+                                                          </body>
+                                                          </html>
+                                                          
