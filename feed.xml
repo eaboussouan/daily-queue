@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <title>Eric's Daily Queue</title>
     <link>https://eaboussouan.github.io/daily-queue/</link>
     <description>Daily AI briefs and tutor lessons, one file per episode, nothing ever expires.</description>
     <language>en-us</language>
-    <itunes:author>Eric</itunes:author>
-    <itunes:explicit>false</itunes:explicit>
-  </channel>
+    <ns0:author>Eric</ns0:author>
+    <ns0:explicit>false</ns0:explicit>
+  <item><title>Daily Brief — July 31, 2026</title><description>Software doing the actual job of labor, not just tools for humans, ties two interviews together.</description><pubDate>Fri, 31 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-31-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-31-brief.mp3" length="3169965" type="audio/mpeg" /></item></channel>
 </rss>
