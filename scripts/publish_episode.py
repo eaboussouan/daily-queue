@@ -1,147 +1,108 @@
 #!/usr/bin/env python3
-"""
-Publish one episode (a brief or a tutor lesson) into the shared daily-queue
-podcast feed. Safe for multiple independent sessions to call concurrently
-against the same repo: it pulls immediately before committing and retries
-once on a push race.
+"""Publish one episode (a brief or a tutor lesson) to the shared daily-queue.
+
+v2 design: publishers only ADD two files — audio/<slug>.mp3 and
+episodes/<slug>.json — and push. They NEVER touch feed.xml; a GitHub Action
+(.github/workflows/build-feed.yml) rebuilds it from episodes/ on every push.
+Concurrent publishers can't conflict (different filenames) and no publisher
+can ever corrupt or lose the feed.
+
+Auth: git credentials are injected by the sandbox proxy for repos attached to
+the session's Claude GitHub App — no token needed in this script. If push
+fails with an access error, the repo needs to be (re)attached to the Claude
+GitHub App at github.com/settings/installations.
 
 Usage:
   python3 publish_episode.py \
-    --repo /path/to/local/clone/of/daily-queue \
+    --repo /home/claude/daily-queue \
     --audio /path/to/episode.mp3 \
-    --slug 2026-08-03-brief \
-    --title "Daily Brief — August 3, 2026" \
+    --slug 2026-08-05-brief \
+    --title "Daily Brief — August 5, 2026" \
     --category Brief \
-    --pubdate "2026-08-03T11:30:00Z" \
-    --description "A new blood test that predicts all-cause mortality..."
+    --pubdate "2026-08-05T11:30:00Z" \
+    --description "One-sentence teaser."
 
---category is a free-text label shown in the feed/page, e.g. "Brief" or
-"Tutor · Spanish · Unit 4". Every episode is its own standalone audio file —
-this script never concatenates or overwrites audio, it only ever adds one
-new <item> and one new file under audio/.
+Every episode is its own standalone audio file — this script never
+concatenates or overwrites audio.
 """
 import argparse
+import json
 import os
 import shutil
 import subprocess
 import sys
 import time
-import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
-from email.utils import format_datetime, parsedate_to_datetime
 
 
 def run(cmd, cwd):
     return subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
 
 
-def rfc822(pubdate_str):
-    # Accept either ISO 8601 (2026-08-03T11:30:00Z) or already-RFC822.
-    try:
-        dt = datetime.fromisoformat(pubdate_str.replace("Z", "+00:00"))
-    except ValueError:
-        dt = parsedate_to_datetime(pubdate_str)
-    if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
-    return format_datetime(dt)
-
-
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--repo", required=True, help="local path to the cloned daily-queue repo")
-    p.add_argument("--audio", required=True, help="path to the mp3 to publish")
-    p.add_argument("--slug", required=True, help="filesystem-safe unique id, e.g. 2026-08-03-brief")
+    p.add_argument("--repo", required=True)
+    p.add_argument("--audio", required=True)
+    p.add_argument("--slug", required=True)
     p.add_argument("--title", required=True)
-    p.add_argument("--category", required=True, help='e.g. "Brief" or "Tutor · Spanish · Unit 4"')
-    p.add_argument("--pubdate", required=True, help="ISO 8601 UTC, e.g. 2026-08-03T11:30:00Z")
+    p.add_argument("--category", required=True)
+    p.add_argument("--pubdate", required=True, help="ISO 8601 UTC, e.g. 2026-08-05T11:30:00Z")
     p.add_argument("--description", default="")
-    p.add_argument("--base-url", default="https://eaboussouan.github.io/daily-queue")
-    p.add_argument("--push-retries", type=int, default=3)
+    p.add_argument("--push-retries", type=int, default=5)
     args = p.parse_args()
 
     repo = args.repo
-    audio_src = args.audio
-    if not os.path.isfile(audio_src):
-        sys.exit(f"audio file not found: {audio_src}")
+    if not os.path.isfile(args.audio):
+        sys.exit(f"audio file not found: {args.audio}")
 
-    audio_dir = os.path.join(repo, "audio")
-    os.makedirs(audio_dir, exist_ok=True)
-    dest_filename = f"{args.slug}.mp3"
-    dest_path = os.path.join(audio_dir, dest_filename)
+    # Start from current remote state. Local repo state is disposable — the
+    # remote is the source of truth and this repo only ever gains files.
+    fetch = run(["git", "fetch", "origin", "main"], cwd=repo)
+    if fetch.returncode != 0:
+        print(fetch.stderr, file=sys.stderr)
+        sys.exit("git fetch failed — check that the repo is attached to the "
+                 "Claude GitHub App (github.com/settings/installations)")
+    run(["git", "reset", "--hard", "origin/main"], cwd=repo)
+
+    audio_dest = os.path.join(repo, "audio", f"{args.slug}.mp3")
+    ep_dest = os.path.join(repo, "episodes", f"{args.slug}.json")
+    if os.path.exists(ep_dest):
+        print(f"episode {args.slug} already published — nothing to do")
+        return
+    os.makedirs(os.path.dirname(audio_dest), exist_ok=True)
+    os.makedirs(os.path.dirname(ep_dest), exist_ok=True)
+
+    shutil.copyfile(args.audio, audio_dest)
+    with open(ep_dest, "w") as f:
+        json.dump({
+            "slug": args.slug,
+            "title": args.title,
+            "description": args.description,
+            "category": args.category,
+            "pubdate": args.pubdate,
+            "audio": f"{args.slug}.mp3",
+        }, f, indent=2, ensure_ascii=False)
+
+    run(["git", "add", audio_dest, ep_dest], cwd=repo)
+    commit = run(["git", "commit", "-m", f"Add episode: {args.title}"], cwd=repo)
+    if commit.returncode != 0:
+        print(commit.stdout, commit.stderr, file=sys.stderr)
+        sys.exit("git commit failed")
 
     for attempt in range(1, args.push_retries + 1):
-        # Always start from the latest remote state before editing feed.xml,
-        # so two sessions publishing around the same time don't clobber
-        # each other's <item> entries.
-        pull = run(["git", "pull", "--rebase", "origin", "main"], cwd=repo)
-        if pull.returncode != 0:
-            print(pull.stdout, pull.stderr, file=sys.stderr)
-            sys.exit("git pull failed")
-
-        shutil.copyfile(audio_src, dest_path)
-        size_bytes = os.path.getsize(dest_path)
-
-        feed_path = os.path.join(repo, "feed.xml")
-        tree = ET.parse(feed_path)
-        root = tree.getroot()
-        channel = root.find("channel")
-
-        # Skip if this slug was already published (idempotent re-run).
-        existing_guids = {el.text for el in channel.findall("guid")}
-        guid_value = args.slug
-        already = any(
-            item.find("guid") is not None and item.find("guid").text == guid_value
-            for item in channel.findall("item")
-        )
-        if not already:
-            item = ET.SubElement(channel, "item")
-            ET.SubElement(item, "title").text = args.title
-            ET.SubElement(item, "description").text = args.description
-            ET.SubElement(item, "pubDate").text = rfc822(args.pubdate)
-            ET.SubElement(item, "category").text = args.category
-            guid = ET.SubElement(item, "guid")
-            guid.set("isPermaLink", "false")
-            guid.text = guid_value
-            enclosure = ET.SubElement(item, "enclosure")
-            enclosure.set("url", f"{args.base_url}/audio/{dest_filename}")
-            enclosure.set("length", str(size_bytes))
-            enclosure.set("type", "audio/mpeg")
-
-            # Keep items newest-first for readability; podcast apps re-sort
-            # by pubDate regardless.
-            items = channel.findall("item")
-            for it in items:
-                channel.remove(it)
-
-            def keyfn(it):
-                try:
-                    return parsedate_to_datetime(it.find("pubDate").text)
-                except Exception:
-                    return datetime.min.replace(tzinfo=timezone.utc)
-
-            items.sort(key=keyfn, reverse=True)
-            for it in items:
-                channel.append(it)
-
-            tree.write(feed_path, encoding="UTF-8", xml_declaration=True)
-
-        run(["git", "add", "-A"], cwd=repo)
-        commit = run(["git", "commit", "-m", f"Add episode: {args.title}"], cwd=repo)
-        if commit.returncode != 0 and "nothing to commit" not in (commit.stdout + commit.stderr):
-            print(commit.stdout, commit.stderr, file=sys.stderr)
-            sys.exit("git commit failed")
-
         push = run(["git", "push", "origin", "main"], cwd=repo)
         if push.returncode == 0:
             print(f"published: {args.title}")
-            print(f"audio: {args.base_url}/audio/{dest_filename}")
-            print(f"feed: {args.base_url}/feed.xml")
+            print("feed rebuild runs automatically via GitHub Actions "
+                  "(~1 min): https://eaboussouan.github.io/daily-queue/feed.xml")
             return
-        else:
-            print(f"push attempt {attempt} failed, retrying...", file=sys.stderr)
-            time.sleep(2)
+        print(f"push attempt {attempt} failed: {push.stderr.strip()[:200]}", file=sys.stderr)
+        run(["git", "pull", "--rebase", "origin", "main"], cwd=repo)
+        time.sleep(3)
 
-    sys.exit("git push failed after retries")
+    sys.exit("git push failed after retries — the episode files are committed "
+             "locally. Most likely cause: the repo is not attached to the "
+             "Claude GitHub App (github.com/settings/installations). Fix "
+             "access, then re-run this script (it is idempotent).")
 
 
 if __name__ == "__main__":
