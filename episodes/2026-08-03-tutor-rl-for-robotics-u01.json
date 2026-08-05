@@ -1,0 +1,8 @@
+{
+  "slug": "2026-08-03-tutor-rl-for-robotics-u01",
+  "title": "Tutor · RL for Robotics · Unit 01 — Policy gradients from the ground up",
+  "description": "From the RL objective to REINFORCE: the log-derivative trick, why dynamics drop out, reward-to-go, baselines, and the road to PPO.",
+  "category": "Tutor · RL for Robotics",
+  "pubdate": "2026-08-03T18:00:00Z",
+  "audio": "2026-08-03-tutor-rl-for-robotics-u01.mp3"
+}
