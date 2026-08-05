@@ -1,11 +1,139 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
     <title>Eric's Daily Queue</title>
     <link>https://eaboussouan.github.io/daily-queue/</link>
     <description>Daily AI briefs and tutor lessons, one file per episode, nothing ever expires.</description>
     <language>en-us</language>
-    <ns0:author>Eric</ns0:author>
-    <ns0:explicit>false</ns0:explicit>
-  <item><title>Daily Brief — August 5, 2026</title><description>Chai Discovery's 150x jump in AI-designed drug success rates, and Michael Kratsios on the White House's 10x science agenda.</description><pubDate>Wed, 05 Aug 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-08-05-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-05-brief.mp3" length="1539117" type="audio/mpeg" /></item><item><title>Daily Brief — August 4, 2026</title><description>Quen 3.8 Max's frontier-competitive benchmarks, Waymo's four gaps between physical and digital AI, and Baseten's self-optimizing GPU kernels.</description><pubDate>Tue, 04 Aug 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-08-04-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-04-brief.mp3" length="3161325" type="audio/mpeg" /></item><item><title>Tutor · RL for Robotics · Unit 01 v2 — Drill (Pimsleur-style)</title><description>Pimsleur-style drill: short graduated questions, real 5–8 second silences to answer out loud, everything repeats. Supersedes the first drill.</description><pubDate>Tue, 04 Aug 2026 00:31:00 +0000</pubDate><category>Tutor · RL for Robotics</category><guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01-drill-v2</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01-drill-v2.mp3" length="6976365" type="audio/mpeg" /></item><item><title>Tutor · RL for Robotics · Unit 01 v2 — Policy gradients (slower, step-by-step)</title><description>Reworked lesson: slower pacing, progressive buildup, recaps, real pauses in the self-quiz. Supersedes the first Unit 01 episode.</description><pubDate>Tue, 04 Aug 2026 00:30:00 +0000</pubDate><category>Tutor · RL for Robotics</category><guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01-lesson-v2</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01-lesson-v2.mp3" length="6967725" type="audio/mpeg" /></item><item><title>Tutor · RL for Robotics · Unit 01 — Drill: policy gradients by heart</title><description>Spaced-repetition drill — 10 core Q&amp;As, 3 recall rounds. Replay day 1 and day 3.</description><pubDate>Mon, 03 Aug 2026 18:01:00 +0000</pubDate><category>Tutor · RL for Robotics</category><guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01-drill</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01-drill.mp3" length="7330176" type="audio/mpeg" /></item><item><title>Tutor · RL for Robotics · Unit 01 — Policy gradients from the ground up</title><description>From the RL objective to REINFORCE: the log-derivative trick, why dynamics drop out, reward-to-go, baselines, and the road to PPO.</description><pubDate>Mon, 03 Aug 2026 18:00:00 +0000</pubDate><category>Tutor · RL for Robotics</category><guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01.mp3" length="8983680" type="audio/mpeg" /></item><item><title>Daily Brief — August 3, 2026</title><description>A new blood test that predicts all-cause mortality from a single draw.</description><pubDate>Mon, 03 Aug 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-08-03-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-brief.mp3" length="1408173" type="audio/mpeg" /></item><item><title>Daily Brief — August 2, 2026</title><description>Codex/GPT-5.6 reasoning-effort tip from Matthew Berman, plus the rest of the act-on list.</description><pubDate>Sun, 02 Aug 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-08-02-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-02-brief.mp3" length="738477" type="audio/mpeg" /></item><item><title>Daily Brief — August 1, 2026</title><description>Patrick Collison's Stripe data is the most actionable item today.</description><pubDate>Sat, 01 Aug 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-08-01-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-01-brief.mp3" length="1378221" type="audio/mpeg" /></item><item><title>Daily Brief — July 31, 2026</title><description>Software doing the actual job of labor, not just tools for humans, ties two interviews together.</description><pubDate>Fri, 31 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-31-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-31-brief.mp3" length="3169965" type="audio/mpeg" /></item><item><title>Daily Brief — July 30, 2026</title><description>The open-source AI fight boiled over today across three channels.</description><pubDate>Thu, 30 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-30-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-30-brief.mp3" length="3037485" type="audio/mpeg" /></item><item><title>Daily Brief — July 29, 2026</title><description>The physical-AI theme dominates across three unrelated channels today.</description><pubDate>Wed, 29 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-29-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-29-brief.mp3" length="3369453" type="audio/mpeg" /></item><item><title>Daily Brief — July 28, 2026</title><description>Sam Altman's YC Startup School interview with Garry Tan, plus the rest of the act-on list.</description><pubDate>Tue, 28 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-28-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-28-brief.mp3" length="2896941" type="audio/mpeg" /></item><item><title>Daily Brief — July 24, 2026</title><description>Two channels went deep on Kimi K3 again today.</description><pubDate>Fri, 24 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-24-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-24-brief.mp3" length="2534253" type="audio/mpeg" /></item><item><title>Daily Brief — July 23, 2026</title><description>Today's biggest story is a security incident, sourced from Matthew Berman's channel.</description><pubDate>Thu, 23 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-23-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-23-brief.mp3" length="4345005" type="audio/mpeg" /></item><item><title>Daily Brief — July 22, 2026</title><description>Kimi K3, the new open-weight model from Moonshot, and the rest of the day's act-on list.</description><pubDate>Wed, 22 Jul 2026 11:30:00 +0000</pubDate><category>Brief</category><guid isPermaLink="false">2026-07-22-brief</guid><enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-22-brief.mp3" length="4873005" type="audio/mpeg" /></item></channel>
+    <itunes:author>Eric</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <item>
+      <title>Daily Brief — August 5, 2026</title>
+      <description>Chai Discovery's 150x jump in AI-designed drug success rates, and Michael Kratsios on the White House's 10x science agenda.</description>
+      <pubDate>Wed, 05 Aug 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-08-05-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-05-brief.mp3" length="1539117" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — August 4, 2026</title>
+      <description>Quen 3.8 Max's frontier-competitive benchmarks, Waymo's four gaps between physical and digital AI, and Baseten's self-optimizing GPU kernels.</description>
+      <pubDate>Tue, 04 Aug 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-08-04-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-04-brief.mp3" length="3161325" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Tutor · RL for Robotics · Unit 01 v2 — Drill (Pimsleur-style)</title>
+      <description>Pimsleur-style drill: short graduated questions, real 5–8 second silences to answer out loud, everything repeats. Supersedes the first drill.</description>
+      <pubDate>Tue, 04 Aug 2026 00:31:00 +0000</pubDate>
+      <category>Tutor · RL for Robotics</category>
+      <guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01-drill-v2</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01-drill-v2.mp3" length="6976365" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Tutor · RL for Robotics · Unit 01 v2 — Policy gradients (slower, step-by-step)</title>
+      <description>Reworked lesson: slower pacing, progressive buildup, recaps, real pauses in the self-quiz. Supersedes the first Unit 01 episode.</description>
+      <pubDate>Tue, 04 Aug 2026 00:30:00 +0000</pubDate>
+      <category>Tutor · RL for Robotics</category>
+      <guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01-lesson-v2</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01-lesson-v2.mp3" length="6967725" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Tutor · RL for Robotics · Unit 01 — Drill: policy gradients by heart</title>
+      <description>Spaced-repetition drill — 10 core Q&amp;As, 3 recall rounds. Replay day 1 and day 3.</description>
+      <pubDate>Mon, 03 Aug 2026 18:01:00 +0000</pubDate>
+      <category>Tutor · RL for Robotics</category>
+      <guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01-drill</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01-drill.mp3" length="7330176" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Tutor · RL for Robotics · Unit 01 — Policy gradients from the ground up</title>
+      <description>From the RL objective to REINFORCE: the log-derivative trick, why dynamics drop out, reward-to-go, baselines, and the road to PPO.</description>
+      <pubDate>Mon, 03 Aug 2026 18:00:00 +0000</pubDate>
+      <category>Tutor · RL for Robotics</category>
+      <guid isPermaLink="false">2026-08-03-tutor-rl-for-robotics-u01</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-tutor-rl-for-robotics-u01.mp3" length="8983680" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — August 3, 2026</title>
+      <description>A new blood test that predicts all-cause mortality from a single draw.</description>
+      <pubDate>Mon, 03 Aug 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-08-03-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-03-brief.mp3" length="1408173" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — August 2, 2026</title>
+      <description>Codex/GPT-5.6 reasoning-effort tip from Matthew Berman, plus the rest of the act-on list.</description>
+      <pubDate>Sun, 02 Aug 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-08-02-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-02-brief.mp3" length="738477" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — August 1, 2026</title>
+      <description>Patrick Collison's Stripe data is the most actionable item today.</description>
+      <pubDate>Sat, 01 Aug 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-08-01-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-08-01-brief.mp3" length="1378221" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 31, 2026</title>
+      <description>Software doing the actual job of labor, not just tools for humans, ties two interviews together.</description>
+      <pubDate>Fri, 31 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-31-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-31-brief.mp3" length="3169965" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 30, 2026</title>
+      <description>The open-source AI fight boiled over today across three channels.</description>
+      <pubDate>Thu, 30 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-30-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-30-brief.mp3" length="3037485" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 29, 2026</title>
+      <description>The physical-AI theme dominates across three unrelated channels today.</description>
+      <pubDate>Wed, 29 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-29-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-29-brief.mp3" length="3369453" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 28, 2026</title>
+      <description>Sam Altman's YC Startup School interview with Garry Tan, plus the rest of the act-on list.</description>
+      <pubDate>Tue, 28 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-28-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-28-brief.mp3" length="2896941" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 24, 2026</title>
+      <description>Two channels went deep on Kimi K3 again today.</description>
+      <pubDate>Fri, 24 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-24-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-24-brief.mp3" length="2534253" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 23, 2026</title>
+      <description>Today's biggest story is a security incident, sourced from Matthew Berman's channel.</description>
+      <pubDate>Thu, 23 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-23-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-23-brief.mp3" length="4345005" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>Daily Brief — July 22, 2026</title>
+      <description>Kimi K3, the new open-weight model from Moonshot, and the rest of the day's act-on list.</description>
+      <pubDate>Wed, 22 Jul 2026 11:30:00 +0000</pubDate>
+      <category>Brief</category>
+      <guid isPermaLink="false">2026-07-22-brief</guid>
+      <enclosure url="https://eaboussouan.github.io/daily-queue/audio/2026-07-22-brief.mp3" length="4873005" type="audio/mpeg" />
+    </item>
+  </channel>
 </rss>
